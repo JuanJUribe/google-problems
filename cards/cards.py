@@ -1,7 +1,7 @@
 import sys 
 
 def everyone_sign(names):
-    if type(names) != list:
+    if not isinstance(names, list):
         raise ValueError('everyone_sign function requires a list as argument')
     names = list(set(names))
     messages = {}

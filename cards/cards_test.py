@@ -10,7 +10,7 @@ class TestBueller(unittest.TestCase):
 
     def function_defined(self):
         try:
-            self.assert_(everyone_sign is not None)
+            self.assertFalse(everyone_sign is None)
         except NameError as e:
             self.fail("Define a function called everyone_sign")
             self.skipTest(TestBueller)
