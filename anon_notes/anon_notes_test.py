@@ -53,6 +53,10 @@ class TestBueller(unittest.TestCase):
                     "two words twice")
         self.assertFalse(anon_note_checker(magazine, note))
 
+    def test_duplicate_punctuation(self):
+            note = "This is the message for you! thank you!"
+            magazine = "This is the message for you, thank you!"
+            self.assertFalse(anon_note_checker(magazine, note))
 
 if __name__ == '__main__':
     unittest.main()
