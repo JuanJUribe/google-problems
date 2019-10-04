@@ -29,6 +29,16 @@ class TestBueller(unittest.TestCase):
         magazine = "FOR YOU THIS MESSAGE IS THE"
         self.assertTrue(anon_note_checker(magazine, note))
 
+    def test_inclusion_with_punctuation(self):
+        note = "This is the message for you"
+        magazine = "This. is, the? message! for: you;"
+        self.assertTrue(anon_note_checker(magazine, note))
+
+    def test_inclusion_with_punctuation_in_note(self):
+        note = "This is the message for you, thank you!"
+        magazine = "This. is, the? message! for: you, you! thank"
+        self.assertTrue(anon_note_checker(magazine, note))
+
     def test_failure(self):
         note = "This is the message I want to send you"
         magazine = ("send a message to you is the scope of this printed "
