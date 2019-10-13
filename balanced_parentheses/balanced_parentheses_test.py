@@ -1,62 +1,51 @@
 import sys
 import unittest
-from anon_notes import anon_note_checker
+from balanced_parentheses import is_string_balanced
 
 class TestBueller(unittest.TestCase):
 
     def setUp(self):
         pass
 
-    def test_strict_inclusion(self):
-        note = "This is the message for you"
-        magazine = ("This magazine contains everything you need "
-                    "you should find that the article is enough "
-                    "for composing the message")
-        self.assertTrue(anon_note_checker(magazine, note))
+    def test_sinlge_balanced(self):
+        string = "(This string is balanced)"
+        self.assertTrue(is_string_balanced(string))
 
-    def test_same_message(self):
-        note = "This is the message for you"
-        magazine = "This is the message for you"
-        self.assertTrue(anon_note_checker(magazine, note))
+    def test_multiple_balanced_1(self):
+        string = "(This (string is) balanced)"
+        self.assertTrue(is_string_balanced(string))
 
-    def test_inclusion(self):
-        note = "This is the message for you"
-        magazine = "for you This message is the"
-        self.assertTrue(anon_note_checker(magazine, note))
+    def test_multiple_balanced_2(self):
+        string = "(This) string is (balanced)"
+        self.assertTrue(is_string_balanced(string))
 
-    def test_inclusion_case_insensitive(self):
-        note = "This is the message for you"
-        magazine = "FOR YOU THIS MESSAGE IS THE"
-        self.assertTrue(anon_note_checker(magazine, note))
+    def test_multiple_balanced_3(self):
+        string = "(This) (string is (balanced))"
+        self.assertTrue(is_string_balanced(string))
 
-    def test_inclusion_with_punctuation(self):
-        note = "This is the message for you"
-        magazine = "This. is, the? message! for: you;"
-        self.assertTrue(anon_note_checker(magazine, note))
+    def test_wrong_order(self):
+        string = ")This string is not balanced("
+        self.assertFalse(is_string_balanced(string))
 
-    def test_inclusion_with_punctuation_in_note(self):
-        note = "This is the message for you, thank you!"
-        magazine = "This. is, the? message! for: you, you! thank"
-        self.assertTrue(anon_note_checker(magazine, note))
+    def test_only_open(self):
+        string = "(This (string is not balanced("
+        self.assertFalse(is_string_balanced(string))
 
-    def test_failure(self):
-        note = "This is the message I want to send you"
-        magazine = ("send a message to you is the scope of this printed "
-                    "article but it will not be enough because it does not "
-                    "contain two of the needed words")
-        self.assertFalse(anon_note_checker(magazine, note))
+    def test_only_close(self):
+        string = ")This )string is not balanced)"
+        self.assertFalse(is_string_balanced(string))
 
-    def test_duplicate_words(self):
-        note = "This message is the message that I want to send to you"
-        magazine = ("This article is not enough because it contains the words "
-                    "that I want to send you in a message but does not contain "
-                    "two words twice")
-        self.assertFalse(anon_note_checker(magazine, note))
+    def test_unbalanced_1(self):
+        string = "(This) string is not balanced)"
+        self.assertFalse(is_string_balanced(string))
 
-    def test_duplicate_punctuation(self):
-            note = "This is the message for you! thank you!"
-            magazine = "This is the message for you, thank you!"
-            self.assertFalse(anon_note_checker(magazine, note))
+    def test_unbalanced_2(self):
+        string = "(This) string is not balanced)("
+        self.assertFalse(is_string_balanced(string))
+
+    def test_unbalanced_3(self):
+        string = "((This string is not balanced)("
+        self.assertFalse(is_string_balanced(string))
 
 if __name__ == '__main__':
     unittest.main()

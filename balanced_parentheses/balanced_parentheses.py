@@ -9,5 +9,3 @@ def is_string_balanced(string):
 			string = string.replace('(', '',  1)
 			string = string.replace(')', '',  1)
 	return True
-
-	
