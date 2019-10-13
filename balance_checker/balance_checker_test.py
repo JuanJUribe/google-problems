@@ -1,6 +1,6 @@
 import sys
 import unittest
-from balanced_parentheses import is_string_balanced
+from balance_checker import is_string_balanced
 
 class TestBueller(unittest.TestCase):
 
