@@ -1,4 +1,4 @@
-package upanddown;
+// package upanddown;
 
 import org.junit.Assert;
 import org.junit.Test;

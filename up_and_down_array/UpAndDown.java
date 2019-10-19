@@ -1,8 +1,11 @@
-package upanddown;
+// package upanddown;
 
 import java.util.Arrays;
 
-class Main {
+public class UpAndDown {
+
+  public UpAndDown(){
+  }
   
   public static Integer findMaxIdx(int[] array) {
     if(array.length == 0){
