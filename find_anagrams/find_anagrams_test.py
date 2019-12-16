@@ -8,12 +8,10 @@ class TestAnagrams(unittest.TestCase):
         pass
 
     def test_simple_true(self):
-        self.assertTrue(string_contains_anagram("crowd",
-                                                "word"))
+        self.assertTrue(string_contains_anagram("crowd", "word"))
 
     def test_simple_true2(self):
-        self.assertTrue(string_contains_anagram("welisten",
-                                                "silent"))
+        self.assertTrue(string_contains_anagram("welisten", "silent"))
 
     def test_anagram_is_full_string(self):
         self.assertTrue(string_contains_anagram("listen", "silent"))
